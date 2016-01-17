@@ -4,6 +4,7 @@ module Multipart::Fixtures
   def fixtures
     [Rfc1867.new, NoTrailingCRLF.new, EmptyHeader.new]
   end
+
   extend self
 
   class Rfc1867
@@ -21,7 +22,7 @@ module Multipart::Fixtures
       part1[:data] = "Joe Blow\r\nalmost tricked you!"
       part2[:headers] = {} of String => String
       part2[:headers]["content-disposition"] = "form-data; name='pics'; " +
-                                                "filename='file1.txt'"
+        "filename='file1.txt'"
       part2[:headers]["Content-Type"] = "text/plain"
       part2[:data] = "... contents of file1.txt ...\r"
       [part1, part2]
@@ -38,7 +39,7 @@ module Multipart::Fixtures
         "",
         "... contents of file1.txt ...\r",
         "--AaB03x--",
-        ""
+        "",
       ].join("\r\n")
     end
   end
@@ -58,7 +59,7 @@ module Multipart::Fixtures
       part1[:data] = "Joe Blow\r\nalmost tricked you!"
       part2[:headers] = {} of String => String
       part2[:headers]["content-disposition"] = "form-data; name='pics'; " +
-                                                "filename='file1.txt' "
+        "filename='file1.txt' "
       part2[:headers]["Content-Type"] = "text/plain"
       part2[:data] = "... contents of file1.txt ...\r"
       [part1, part2]
@@ -74,7 +75,7 @@ module Multipart::Fixtures
         "Content-Type: text/plain",
         "",
         "... contents of file1.txt ...\r",
-        "--AaB03x--"
+        "--AaB03x--",
       ].join("\r\n")
     end
   end
@@ -100,7 +101,7 @@ module Multipart::Fixtures
         "content-disposition: form-data; name='field1'",
         "",
         "Joe Blow\r\nalmost tricked you!",
-        "----------------------------5c4dc587f69f--"
+        "----------------------------5c4dc587f69f--",
       ].join("\r\n")
     end
   end
@@ -130,7 +131,7 @@ module Multipart::Fixtures
         "",
         "... contents of file1.txt ...\r",
         "--AaB03x--",
-        ""
+        "",
       ].join("\r\n")
     end
   end
